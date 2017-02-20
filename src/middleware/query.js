@@ -120,6 +120,10 @@ const queryMiddleware = (queriesSelector, entitiesSelector, config = defaultConf
                             request.send(body);
                         }
 
+                        if (options.headers) {
+                            request.set(options.headers);
+                        }
+
                         let attempts = 0;
                         const backoff = new Backoff({
                             min: config.backoff.minDuration,
